@@ -1,14 +1,14 @@
 <template>
   <div id="nav">
     <div class="logo">
-      <img src="../assets/home-img/logo.png" alt="" />
+      <img src="" alt="" />
     </div>
     <ul class="type">
       <li>
-        <router-link to="">首页</router-link>
+        <router-link to="#">首页</router-link>
       </li>
       <li>
-        <router-link to="">椅凳</router-link>
+        <router-link to="#">椅凳</router-link>
         <div class="type-two">
           <div calss="type-two-con">
             <div v-for="(item, index) in safa" :key="index">
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import home from "../views/Home";
+// import home from "../views/Home";
 export default {
   data() {
     return {
@@ -164,7 +164,7 @@ export default {
   width: 20px;
   height: 20px;
   float: left;
-  background: url("../assets/home-img/jinglingtu.png");
+  /* background: url("../assets/home-img/jinglingtu.png"); */
   background-position: -300px -40px;
   transform: scale(0.7);
   margin-top: 15px;
@@ -174,28 +174,28 @@ export default {
 .person {
   width: 25px;
   height: 50px;
-  background: url("../assets/home-img/person.png") no-repeat;
+  /* background: url("../assets/home-img/person.png") no-repeat; */
   background-size: 100% 47%;
   margin-top: 12px;
 }
 .shopcar {
   width: 25px;
   height: 50px;
-  background: url("../assets/home-img/shopcar.png") no-repeat;
+  /* background: url("../assets/home-img/shopcar.png") no-repeat; */
   background-size: 100% 47%;
   margin-top: 12px;
 }
 .person:hover {
   width: 25px;
   height: 50px;
-  background: url("../assets/home-img/person-hover.png") no-repeat;
+  /* background: url("../assets/home-img/person-hover.png") no-repeat; */
   background-size: 100% 47%;
   margin-top: 12px;
 }
 .shopcar:hover {
   width: 25px;
   height: 50px;
-  background: url("../assets/home-img/shopcar-hover.png") no-repeat;
+  /* background: url("../assets/home-img/shopcar-hover.png") no-repeat; */
   background-size: 100% 47%;
   margin-top: 12px;
 }

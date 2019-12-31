@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    <router-link to="/login"></router-link>
-
+    <router-link to="/login">login</router-link>
+    <navg></navg>
     <router-view></router-view>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import chair from './views/chair.vue';
+import desk from './views/desk.vue'
+import login from './views/Login.vue'
+import register from './views/Register.vue'
+import navg from './components/nav'
+
+export default {
+  components:{
+    chair:chair,
+    desk,
+    login,
+    register,
+    navg
+  }
 }
+</script>
+<style lang="scss">
 
 </style>
  
