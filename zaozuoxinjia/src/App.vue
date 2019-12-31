@@ -3,6 +3,7 @@
      <home></home>
       <!-- <nav-head></nav-head> -->
   <router-view/>
+
   </div>
 </template>
 
@@ -36,3 +37,4 @@ export default {
 }
 
 </style>
+ 
