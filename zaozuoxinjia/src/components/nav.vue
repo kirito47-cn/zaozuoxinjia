@@ -10,100 +10,100 @@
       <li>
         <router-link to="">沙发</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in safa" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in safa" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
       <li>
         <router-link to="">椅凳</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in desk" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in desk" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
       <li>
         <router-link to="">茶几</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in safa" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in chaji" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
       <li>
         <router-link to="">床·床具</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in safa" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in safa" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
       <li>
         <router-link to="">柜架</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in safa" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in safa" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
       <li>
         <router-link to="">家纺</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in safa" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in safa" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
       <li>
         <router-link to="">装饰</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in safa" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in safa" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
       <li>
         <router-link to="">餐具</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in safa" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in safa" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
       <li>
         <router-link to="">系列</router-link>
         <div class="typetwo">
-            <div class="typetwo-con">
-                <router-link to="" v-for="(item,index) in safa" :key="index">
-                    <img :src="item.img" alt="">
-                   <p>{{item.name}}</p>
-                </router-link>
-            </div>
+          <div class="typetwo-con">
+            <router-link to="" v-for="(item, index) in safa" :key="index">
+              <img :src="item.img" alt="" />
+              <p>{{ item.name }}</p>
+            </router-link>
+          </div>
         </div>
       </li>
     </ul>
@@ -130,10 +130,10 @@ export default {
   data() {
     return {
       safa: [
-          {
-            img:"all.png",
-            name:"全部"
-          },
+        {
+          img: "all.png",
+          name: "全部"
+        },
         {
           img: "shafa-1.png",
           name: "三人沙发"
@@ -156,10 +156,10 @@ export default {
         }
       ],
       desk: [
-          {
-            img:"all.png",
-            name:"全部"
-          },
+        {
+          img: "all.png",
+          name: "全部"
+        },
         {
           img: "desk-1.png",
           name: "座椅"
@@ -178,10 +178,10 @@ export default {
         }
       ],
       chaji: [
-          {
-            img:"all.png",
-            name:"全部"
-          },
+        {
+          img: "all.png",
+          name: "全部"
+        },
         {
           img: "chaji-1.png",
           name: "书桌·餐组"
@@ -198,7 +198,7 @@ export default {
           img: "chaji-4.png",
           name: "梳妆台"
         }
-      ],
+      ]
     };
   }
 };
@@ -226,7 +226,7 @@ export default {
   list-style: none;
   justify-content: space-around;
   width: 550px;
-  height: 45px;
+  height: 50px;
   list-style: none;
   line-height: 50px;
   margin-left: 30px;
@@ -242,7 +242,7 @@ export default {
   text-decoration: none;
 }
 .type > li > a:hover {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #fff !important;
 }
 .ringt-nav {
   width: 400px;
@@ -318,34 +318,37 @@ export default {
   display: none;
   position: absolute;
   left: 0;
-  top: 45px;
+  top: 43px;
   height: 95px;
   width: 100%;
   background-color: rgba(49, 49, 49, 0.95);
 }
-.typetwo-con{ 
-    width: 550px;
-    display: flex;
-    flex-wrap: nowrap;
-    margin: 0 auto;
+.typetwo-con {
+  width: 550px;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 auto;
 }
-.typetwo-con>a{
-    height: 95px;
-    width: 55px;
-    text-decoration: none;
-    margin-right: 40px;
+.typetwo-con > a {
+  height: 95px;
+  width: 55px;
+  text-decoration: none;
+  margin-right: 40px;
 }
-.typetwo-con>a>img{
-    width: 55px;
+.typetwo-con > a > img {
+  width: 55px;
 }
-.typetwo-con>a>p{
-    width: 60px;
-    color:  #d2d2d2;
-    font-size: 12px;
-    margin-top: -30px;
-    text-align: center;
+.typetwo-con > a > p {
+  width: 60px;
+  color: #d2d2d2;
+  font-size: 12px;
+  margin-top: -30px;
+  text-align: center;
 }
-.type>li:hover .typetwo{
-    display: block
+.type > li:hover .typetwo {
+  display: block;
+}
+.typetwo-con>a:hover .typetwo-con>a>p{
+   color: #fff
 }
 </style>
