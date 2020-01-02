@@ -1,16 +1,21 @@
 <template>
-  <div class="desks">
-    <div class="chair-box" ref="graybox" v-for="(item,index) in desks" @click="linktoitem(index)" :key="index">
+  <div class="sofas">
+    <div class="chair-box" ref="graybox" v-for="(item,index) in sofas" @click="linktoitem(index)" :key="index">
         <a href="#" >
             <img  :src="item.shop_imgsrc" />
         </a>
         <p class="chair-name">{{item.shop_name}}</p>
         <p class="chair-price">￥{{item.shop_price}}</p>
-        111
        <div class="outer-hover"><div class="hover"  >{{item.shop_desc}}</div></div> 
     </div>
     <div class="chair-box holder " v-for="item in holder" :key="item+'ind'"></div>
-    <!-- <button @click="change">gaibian</button> -->
+    <div class="block">
+          <!-- <span class="demonstration">页数较少时的效果</span> -->
+          <el-pagination
+            layout="prev, pager, next"
+            :total="50">
+          </el-pagination>
+      </div>
   </div>
 </template>
 
@@ -19,33 +24,52 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      desks: []
+      sofas: []
     };
   },
   computed: {
     holder() {//占位 解决flex位置自动增加
      let holder = []
-     for(let i = 0 ;i<4 - (this.desks.length % 4);i++){
+     for(let i = 0 ;i<4 - (this.sofas.length % 4);i++){
          holder.push(i)
      } 
      return holder
     }
   },
   methods:{
-   
       linktoitem(index){
+          console.log(this.sofas[index].shop_id);
            this.$router.push({path:'/item',
            query:{
-             itemId:this.desks[index].shop_id
+             itemId:this.sofas[index].shop_id
         }
         })
       }
   },
   created() {
-    axios.get("http://localhost:9999/desk").then(res => {
-      this.desks = res.data.data;
+    console.log(`sofa created`);
+    axios.get("http://localhost:9999/sofa").then(res => {
+      this.sofas = res.data.data;
     });
+  },
+  watch:{
+    $route(to,from){
+      // console.log(to,from);
+      console.log(to.name);
+      if(to.name !="item"){ 
+        axios.get("http://localhost:9999/"+to.name).then(res => {
+        this.sofas = res.data.data
+      })}else{
+        // to.name = getsofa
+      }
+     
+    }
   }
+  // beforeRouteLeave(to,from,next){
+  //   // console.log(this);
+  //   console.log(to,from);
+  //   next()
+  // }
 };
 </script>
 
@@ -108,7 +132,7 @@ export default {
      top: -250px
  }
 
-.desks {
+.sofas {
   margin-top: 200px;
   display: flex;
   justify-content: space-between;

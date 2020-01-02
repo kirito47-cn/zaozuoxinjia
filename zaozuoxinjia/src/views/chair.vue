@@ -48,7 +48,7 @@ export default {
    }
   },
   created() {
-    axios.get("http://localhost:9999/getchair").then(res => {
+    axios.get("http://localhost:9999/chair").then(res => {
       this.chairs = res.data.data;
     });
   }
@@ -71,7 +71,7 @@ export default {
   width: 230px;
   height: 285px;
   padding-bottom: 50px;
-
+  // margin-top: 200px;
   text-align: center;
   line-height: 20px;
   img {
@@ -117,6 +117,6 @@ export default {
   flex-wrap: wrap;
   width: 80%;
   margin: 0 auto;
-  margin-top: 60px
+  // margin-top: 600px
 }
 </style>

@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import Home from '../views/Home.vue'
-
+import Home from '../views/Home.vue'
+import Sofa from '../views/sofa.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: Home
+  {
+    path: '/',
+    name: 'home',
+    component: Home
 
-  // },
+  },
   {
     path: '/login',
     name: 'login',
@@ -45,7 +45,35 @@ const routes = [
   {
     path: '/sofa',
     name: 'sofa',
-    component: () => import(/* webpackChunkName: "about" */ '../views/sofa.vue')
+    // redirect:'/sofa/all',
+    component:Sofa,
+    children:[
+      {
+        path:'all',
+        name:'all',
+        component: Sofa,
+        redirect:'/sofa'
+      }
+      ,
+      {
+        path:'single',
+        name:'singlesofa',
+        component: () => import(/* webpackChunkName: "about" */ '../components/singlesofa.vue')
+      }
+      ,
+      {
+        path:'triple',
+        name:'triplesofa',
+        component: () => import(/* webpackChunkName: "about" */ '../components/triplesofa.vue')
+      }
+      ,
+      {
+        path:'double',
+        name:'doublesofa',
+        component: () => import(/* webpackChunkName: "about" */ '../components/doublesofa.vue')
+
+      }
+    ]
   }
 ]
 

@@ -5,8 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    cartNum:0
   },
   mutations: {
+    addCartNum(){
+      this.state.cartNum++;
+    }
   },
   actions: {
   },

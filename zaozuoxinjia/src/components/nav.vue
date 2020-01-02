@@ -1,111 +1,21 @@
 <template>
   <div id="nav">
     <div class="logo">
-      <img src="" alt="" />
+      <img src="../assets/home-img/logo.png" alt="" />
     </div>
-    <ul class="type">
-      <li>
-        <router-link to="#">首页</router-link>
-      </li>
-      <li>
-        <router-link to="#">椅凳</router-link>
-        <div class="type-two">
-          <div calss="type-two-con">
-            <div v-for="(item, index) in safa" :key="index">
-              <img :src="item.img" class="type-two-con-img" />
-              <router-link to="">{{ item.name }}</router-link>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <router-link to="">椅凳</router-link>
-        <div class="typetwo">
-          <div class="typetwo-con">
-            <router-link to="" v-for="(item, index) in desk" :key="index">
-              <img :src="item.img" alt="" />
-              <p>{{ item.name }}</p>
+    <ul class="type" >
+      <li v-for='(item,index) in types' :key="index">
+        <router-link :to="item.url">{{item.name}}</router-link>
+        <div class="typetwo" v-show='index>=1'>
+          <div class="typetwo-con" >
+            <router-link  v-for="(item1, index1) in item.secname" :to="item.url+item1.url" :key="index1">
+              <img :src="item1.img" alt="" />
+              <p>{{ item1.name }}</p>
             </router-link>
           </div>
         </div>
       </li>
-      <li>
-        <router-link to="">茶几</router-link>
-        <div class="typetwo">
-          <div class="typetwo-con">
-            <router-link to="" v-for="(item, index) in chaji" :key="index">
-              <img :src="item.img" alt="" />
-              <p>{{ item.name }}</p>
-            </router-link>
-          </div>
-        </div>
-      </li>
-      <li>
-        <router-link to="">床·床具</router-link>
-        <div class="typetwo">
-          <div class="typetwo-con">
-            <router-link to="" v-for="(item, index) in safa" :key="index">
-              <img :src="item.img" alt="" />
-              <p>{{ item.name }}</p>
-            </router-link>
-          </div>
-        </div>
-      </li>
-      <li>
-        <router-link to="">柜架</router-link>
-        <div class="typetwo">
-          <div class="typetwo-con">
-            <router-link to="" v-for="(item, index) in safa" :key="index">
-              <img :src="item.img" alt="" />
-              <p>{{ item.name }}</p>
-            </router-link>
-          </div>
-        </div>
-      </li>
-      <li>
-        <router-link to="">家纺</router-link>
-        <div class="typetwo">
-          <div class="typetwo-con">
-            <router-link to="" v-for="(item, index) in safa" :key="index">
-              <img :src="item.img" alt="" />
-              <p>{{ item.name }}</p>
-            </router-link>
-          </div>
-        </div>
-      </li>
-      <li>
-        <router-link to="">装饰</router-link>
-        <div class="typetwo">
-          <div class="typetwo-con">
-            <router-link to="" v-for="(item, index) in safa" :key="index">
-              <img :src="item.img" alt="" />
-              <p>{{ item.name }}</p>
-            </router-link>
-          </div>
-        </div>
-      </li>
-      <li>
-        <router-link to="">餐具</router-link>
-        <div class="typetwo">
-          <div class="typetwo-con">
-            <router-link to="" v-for="(item, index) in safa" :key="index">
-              <img :src="item.img" alt="" />
-              <p>{{ item.name }}</p>
-            </router-link>
-          </div>
-        </div>
-      </li>
-      <li>
-        <router-link to="">系列</router-link>
-        <div class="typetwo">
-          <div class="typetwo-con">
-            <router-link to="" v-for="(item, index) in safa" :key="index">
-              <img :src="item.img" alt="" />
-              <p>{{ item.name }}</p>
-            </router-link>
-          </div>
-        </div>
-      </li>
+     
     </ul>
     <ul class="ringt-nav">
       <li class="shitishop">
@@ -117,10 +27,16 @@
       <li class="person">
         <router-link to=""></router-link>
       </li>
+      
       <li class="shopcar">
+        <el-badge :value="cartNum" class="item" v-show="cartNum!==0">
         <router-link to=""></router-link>
+        </el-badge>
       </li>
+   
+      
     </ul>
+     <!-- <router-view></router-view> -->
   </div>
 </template>
 
@@ -129,88 +45,339 @@
 export default {
   data() {
     return {
-      safa: [
+      // cartnum:10,
+      types:[
         {
-          img: "all.png",
-          name: "全部"
+          name:'首页',
+          url:'/',
+          secname:[]
         },
         {
-          img: "shafa-1.png",
-          name: "三人沙发"
+          url:'/sofa',
+          name:'沙发',
+          secname: [
+            {
+              img: "all.png",
+              name: "全部",
+              url:'/all'
+            },
+            {
+              img: "shafa-1.png",
+              name: "三人沙发",
+              url:'/triple'
+
+            },
+            {
+              img: "shafa-2.png",
+              name: "双人沙发",
+              url:'/double'
+
+            },
+            {
+              img: "shafa-3.png",
+              name: "单人沙发",
+              url:'/single'
+
+            },
+            {
+              img: "shafa-4.png",
+              name: "大三人沙发",
+              url:'/bigtrip'
+
+            },
+            {
+              img: "shafa-5.png",
+              name: "沙发墩",
+              url:'/sofadon'
+            }
+          ]
+        },
+        { 
+          url:'/chair',
+          name:'椅凳',
+          secname: [
+            {
+              img: "all.png",
+              name: "全部",
+              url:'/all'
+            },
+            {
+              img: "desk-1.png",
+              name: "座椅",
+              url:'/seatdesk'
+
+            },
+            {
+              img: "desk-2.png",
+              name: "坐墩",
+              url:'/sitdon'
+
+            },
+            {
+              img: "desk-3.png",
+              name: "休闲椅",
+              url:'/comfortseat'
+
+            },
+            {
+              img: "desk-4.png",
+              name: "凳子",
+              url:'/dengzi'
+            }
+             ]
         },
         {
-          img: "shafa-2.png",
-          name: "双人沙发"
+          url:'/desk',
+          name:'茶几',
+        secname: [
+          {
+            img: "all.png",
+            name: "全部",
+            url:'/all'
+          },
+          {
+            img: "chaji-1.png",
+            name: "书桌·餐组",
+            url:'/bookdesk'
+
+          },
+          {
+            img: "chaji-2.png",
+            name: "茶几",
+            url:'/chaji'
+
+          },
+          {
+            img: "chaji-3.png",
+            name: "边几",
+            url:'/bianji'
+
+          },
+          {
+            img: "chaji-4.png",
+            name: "梳妆台",
+            url:'/shuzhuangtai'
+
+          }
+          ]
         },
         {
-          img: "shafa-3.png",
-          name: "单人沙发"
+          url:'#',
+          name:'床·床具',
+          secname: [
+          {
+            img: "all.png",
+            name: "全部"
+          },
+          {
+            img: "chaji-1.png",
+            name: "书桌·餐组"
+          },
+          {
+            img: "chaji-2.png",
+            name: "茶几"
+          },
+          {
+            img: "chaji-3.png",
+            name: "边几"
+          },
+          {
+            img: "chaji-4.png",
+            name: "梳妆台"
+          }
+          ]
         },
         {
-          img: "shafa-4.png",
-          name: "大三人沙发"
+          url:'#',
+          name:'柜架',
+          secname: [
+          {
+            img: "all.png",
+            name: "全部"
+          },
+          {
+            img: "chaji-1.png",
+            name: "书桌·餐组"
+          },
+          {
+            img: "chaji-2.png",
+            name: "茶几"
+          },
+          {
+            img: "chaji-3.png",
+            name: "边几"
+          },
+          {
+            img: "chaji-4.png",
+            name: "梳妆台"
+          }
+          ]
         },
         {
-          img: "shafa-5.png",
-          name: "沙发墩"
-        }
-      ],
-      desk: [
-        {
-          img: "all.png",
-          name: "全部"
+          url:'#',
+          name:'灯具',
+          secname: [
+          {
+            img: "all.png",
+            name: "全部"
+          },
+          {
+            img: "chaji-1.png",
+            name: "书桌·餐组"
+          },
+          {
+            img: "chaji-2.png",
+            name: "茶几"
+          },
+          {
+            img: "chaji-3.png",
+            name: "边几"
+          },
+          {
+            img: "chaji-4.png",
+            name: "梳妆台"
+          }
+          ]
         },
-        {
-          img: "desk-1.png",
-          name: "座椅"
+         {
+          url:'#',
+
+          name:'家纺',
+          secname: [
+          {
+            img: "all.png",
+            name: "全部"
+          },
+          {
+            img: "chaji-1.png",
+            name: "书桌·餐组"
+          },
+          {
+            img: "chaji-2.png",
+            name: "茶几"
+          },
+          {
+            img: "chaji-3.png",
+            name: "边几"
+          },
+          {
+            img: "chaji-4.png",
+            name: "梳妆台"
+          }
+          ]
         },
-        {
-          img: "desk-2.png",
-          name: "坐墩"
+       {
+          url:'#',
+
+          name:'装饰',
+          secname: [
+          {
+            img: "all.png",
+            name: "全部"
+          },
+          {
+            img: "chaji-1.png",
+            name: "书桌·餐组"
+          },
+          {
+            img: "chaji-2.png",
+            name: "茶几"
+          },
+          {
+            img: "chaji-3.png",
+            name: "边几"
+          },
+          {
+            img: "chaji-4.png",
+            name: "梳妆台"
+          }
+          ]
         },
-        {
-          img: "desk-3.png",
-          name: "休闲椅"
+       {
+          url:'#',
+
+          name:'餐具',
+          secname: [
+          {
+            img: "all.png",
+            name: "全部"
+          },
+          {
+            img: "chaji-1.png",
+            name: "书桌·餐组"
+          },
+          {
+            img: "chaji-2.png",
+            name: "茶几"
+          },
+          {
+            img: "chaji-3.png",
+            name: "边几"
+          },
+          {
+            img: "chaji-4.png",
+            name: "梳妆台"
+          }
+          ]
         },
-        {
-          img: "desk-4.png",
-          name: "凳子"
-        }
-      ],
-      chaji: [
-        {
-          img: "all.png",
-          name: "全部"
-        },
-        {
-          img: "chaji-1.png",
-          name: "书桌·餐组"
-        },
-        {
-          img: "chaji-2.png",
-          name: "茶几"
-        },
-        {
-          img: "chaji-3.png",
-          name: "边几"
-        },
-        {
-          img: "chaji-4.png",
-          name: "梳妆台"
+       {
+          url:'#',
+
+          name:'系列',
+          secname: [
+          {
+            img: "all.png",
+            name: "全部"
+          },
+          {
+            img: "chaji-1.png",
+            name: "书桌·餐组"
+          },
+          {
+            img: "chaji-2.png",
+            name: "茶几"
+          },
+          {
+            img: "chaji-3.png",
+            name: "边几"
+          },
+          {
+            img: "chaji-4.png",
+            name: "梳妆台"
+          }
+          ]
         }
       ]
     };
+  },
+  methods:{
+   
+  },
+  computed:{
+    cartNum(){
+      return this.$store.state.cartNum
+    }
+  },
+  created(){
+    
   }
 };
 </script>
 
 <style>
+.item{
+
+  width: 30px;
+  height: 50px;
+}
 #nav {
   padding: 0 5% 0 5%;
   display: flex;
   height: 50px;
   background-color: #313131;
-  position: relative;
+  /* position: fixed;
+  top: 0;
+  z-index: 999; */
 }
 .logo {
   width: 24px;
@@ -276,7 +443,7 @@ export default {
   width: 20px;
   height: 20px;
   float: left;
-  /* background: url("../assets/home-img/jinglingtu.png"); */
+  background: url("../assets/home-img/jinglingtu.png");
   background-position: -300px -40px;
   transform: scale(0.7);
   margin-top: 15px;
@@ -286,28 +453,28 @@ export default {
 .person {
   width: 25px;
   height: 50px;
-  /* background: url("../assets/home-img/person.png") no-repeat; */
+  background: url("../assets/home-img/person.png") no-repeat;
   background-size: 100% 47%;
   margin-top: 12px;
 }
 .shopcar {
   width: 25px;
   height: 50px;
-  /* background: url("../assets/home-img/shopcar.png") no-repeat; */
+  background: url("../assets/home-img/shopcar.png") no-repeat;
   background-size: 100% 47%;
   margin-top: 12px;
 }
 .person:hover {
   width: 25px;
   height: 50px;
-  /* background: url("../assets/home-img/person-hover.png") no-repeat; */
+  background: url("../assets/home-img/person-hover.png") no-repeat;
   background-size: 100% 47%;
   margin-top: 12px;
 }
 .shopcar:hover {
   width: 25px;
   height: 50px;
-  /* background: url("../assets/home-img/shopcar-hover.png") no-repeat; */
+  background: url("../assets/home-img/shopcar-hover.png") no-repeat;
   background-size: 100% 47%;
   margin-top: 12px;
 }
@@ -322,6 +489,7 @@ export default {
   height: 95px;
   width: 100%;
   background-color: rgba(49, 49, 49, 0.95);
+  z-index: 999
 }
 .typetwo-con {
   width: 550px;
