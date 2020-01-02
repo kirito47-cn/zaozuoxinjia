@@ -156,8 +156,9 @@ img {
   background-color: white;
   position: fixed;
   left: 50%;
-  top: 25%;
+  top: 50%;
   margin-left: -250px;
+  margin-top: -250px;
   border-radius: 6px;
 }
 p {

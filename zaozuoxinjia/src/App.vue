@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-     <home></home>
+     <!-- <home></home>s -->
       <!-- <nav-head></nav-head> -->
   <router-view/>
 
@@ -10,7 +10,6 @@
 <script>
 import Home from "./views/Home";
 import Nav from "./components/nav";
-
 export default {
       components:{
         "home":Home,
@@ -24,6 +23,9 @@ export default {
   margin: 0;
   padding: 0;
 } 
+a{
+  text-decoration: none;
+}
 .body{
     background: #f6f6f6;
     color: #313131;

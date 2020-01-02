@@ -16,5 +16,20 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  mounted() {
+    var nav = document.querySelector("#nav");
+    document.onscroll = function() {
+      if (window.pageYOffset >= 150) {
+        nav.style.display = "block";
+        nav.style.position = "fixed";
+        nav.style.top = "0";
+        nav.style.left = "0";
+        nav.style.zIndex = "1000000";
+        nav.style.display="flex";
+      } else {
+        nav.style.display = "none";
+      }
+    };
+  }, 
 }).$mount('#app')
