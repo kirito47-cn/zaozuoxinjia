@@ -3,7 +3,7 @@
     <div class="container">
       <el-container v-if="item.length!=0">
         <el-aside class="img-side" width="800px" style>
-          <img :src="item[0].shop_imgsrc?item[0].shop_imgsrc:item[0].car_img" alt="xxx" />
+          <img :src="item[0].shop_imgsrc?item[0].shop_imgsrc:item[0].car_img|changeUrl" alt="xxx" />
         </el-aside>
         <el-main>
           <h1 class="name">{{item[0].shop_name?item[0].shop_name:item[0].cart_name}}</h1>
@@ -63,6 +63,13 @@ export default {
     setData(data) {
       this.item = data;
       console.log(this.item);
+    }
+  },
+  filters:{
+   changeUrl(oldurl) {
+      // console.log(oldurl);
+      // console.log(oldurl.replace(/localhost/,'192.168.6.12'));
+      return oldurl.replace(/localhost/, "192.168.6.12");
     }
   },
   created() {
