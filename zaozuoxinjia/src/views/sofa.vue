@@ -2,7 +2,8 @@
   <div class="sofas">
     <div class="chair-box" ref="graybox" v-for="(item,index) in sofas" @click="linktoitem(index)" :key="index">
         <a href="#" >
-            <img  :src="item.shop_imgsrc" />
+            <img  :src="item.shop_imgsrc|changeUrl" />
+            <!-- <div>{{item.shop_imgsrc|changeUrl}}</div> -->
         </a>
         <p class="chair-name">{{item.shop_name}}</p>
         <p class="chair-price">￥{{item.shop_price}}</p>
@@ -47,20 +48,26 @@ export default {
       }
   },
   created() {
-    console.log(`sofa created`);
+    // console.log(`sofa created`);
     axios.get("http://localhost:9999/sofa").then(res => {
       this.sofas = res.data.data;
     });
   },
+  filters:{
+       changeUrl(oldurl){
+          // console.log(oldurl.replace(/localhost/,'192.168.6.12'));
+          return oldurl.replace(/localhost/,'192.168.6.12')
+      }
+  },
   watch:{
     $route(to,from){
       // console.log(to,from);
-      console.log(to.name);
+      console.log('from====>'+from);
       if(to.name !="item"){ 
         axios.get("http://localhost:9999/"+to.name).then(res => {
         this.sofas = res.data.data
       })}else{
-        // to.name = getsofa
+     
       }
      
     }

@@ -10,7 +10,15 @@ export default new Vuex.Store({
   mutations: {
     addCartNum(){
       this.state.cartNum++;
+    },
+    // reduceCartNum(){
+    //   this.state.cartNum--;
+    // },
+    sendValue(state,value){
+      // console.log('value====>'+JSON.stringify(value));
+    state.cartNum = value.length
     }
+
   },
   actions: {
   },

@@ -1,10 +1,10 @@
 <template>
-  <div id="nav">
+  <div id="nav" ref="nav">
     <div class="logo">
       <img src="../assets/home-img/logo.png" alt="" />
     </div>
     <ul class="type" >
-      <li v-for='(item,index) in types' :key="index">
+      <li v-for='(item,index) of types' :key="index">
         <router-link :to="item.url">{{item.name}}</router-link>
         <div class="typetwo" v-show='index>=1'>
           <div class="typetwo-con" >
@@ -15,7 +15,6 @@
           </div>
         </div>
       </li>
-     
     </ul>
     <ul class="ringt-nav">
       <li class="shitishop">
@@ -25,16 +24,17 @@
       <li>了解创作新家</li>
       <li>商业合作</li>
       <li class="person">
-        <router-link to=""></router-link>
+        <router-link to="/personal"></router-link>
       </li>
-      
-      <li class="shopcar">
-        <el-badge :value="cartNum" class="item" v-show="cartNum!==0">
-        <router-link to=""></router-link>
-        </el-badge>
+    
+      <li class="shopcar"  @click="tocart">
+        <!-- 右上角的红点 -->
+          <el-badge :value="cartNum" class="item" v-show="cartNum>0"> 
+          <router-link to="/cart"></router-link>
+           </el-badge>
       </li>
    
-      
+    
     </ul>
      <!-- <router-view></router-view> -->
   </div>
@@ -43,7 +43,7 @@
 <script>
 // import home from "../views/Home";
 export default {
-  data() {
+  data:function() {
     return {
       // cartnum:10,
       types:[
@@ -104,19 +104,19 @@ export default {
             {
               img: "desk-1.png",
               name: "座椅",
-              url:'/seatdesk'
+              url:'/zuoyi'
 
             },
             {
               img: "desk-2.png",
               name: "坐墩",
-              url:'/sitdon'
+              url:'/zuodun'
 
             },
             {
               img: "desk-3.png",
               name: "休闲椅",
-              url:'/comfortseat'
+              url:'/xiuxianyi'
 
             },
             {
@@ -351,7 +351,9 @@ export default {
     };
   },
   methods:{
-   
+    tocart(){
+      this.$router.push({path:"/cart"})
+    }
   },
   computed:{
     cartNum(){
@@ -366,7 +368,6 @@ export default {
 
 <style>
 .item{
-
   width: 30px;
   height: 50px;
 }
@@ -375,9 +376,10 @@ export default {
   display: flex;
   height: 50px;
   background-color: #313131;
-  /* position: fixed;
-  top: 0;
-  z-index: 999; */
+  position: relative;
+  /* display: none; */
+  flex-wrap: nowrap;
+  width: 100%;
 }
 .logo {
   width: 24px;
@@ -397,6 +399,7 @@ export default {
   list-style: none;
   line-height: 50px;
   margin-left: 30px;
+  z-index: 1000;
 }
 .type > li > a {
   display: block;
@@ -408,9 +411,6 @@ export default {
   font-size: 13px;
   text-decoration: none;
 }
-.type > li > a:hover {
-  border-bottom: 1px solid #fff !important;
-}
 .ringt-nav {
   width: 400px;
   height: 50px;
@@ -418,7 +418,7 @@ export default {
 }
 .ringt-nav {
   width: 350px;
-  height: 45px;
+  height: 50px;
   display: flex;
   list-style: none;
   justify-content: space-around;
@@ -428,12 +428,15 @@ export default {
   display: block;
   font-size: 12px;
   color: #fff;
-  line-height: 50px;
+  line-height: 45px;
+  height: 45px;
   text-align: center;
   cursor: pointer;
 }
-.ringt-nav li:hover {
-  border-bottom: 1px solid #fff;
+.ringt-nav > li>a{
+  display: block;
+  width: 25px;
+  height: 25px;
 }
 .shitishop {
   position: relative;
@@ -446,7 +449,7 @@ export default {
   background: url("../assets/home-img/jinglingtu.png");
   background-position: -300px -40px;
   transform: scale(0.7);
-  margin-top: 15px;
+  margin-top: 11px;
   margin-right: 5px;
   left: -22px;
 }
@@ -456,6 +459,7 @@ export default {
   background: url("../assets/home-img/person.png") no-repeat;
   background-size: 100% 47%;
   margin-top: 12px;
+  border-bottom: none !important;
 }
 .shopcar {
   width: 25px;
@@ -463,6 +467,7 @@ export default {
   background: url("../assets/home-img/shopcar.png") no-repeat;
   background-size: 100% 47%;
   margin-top: 12px;
+  border-bottom: none !important;
 }
 .person:hover {
   width: 25px;
@@ -478,24 +483,22 @@ export default {
   background-size: 100% 47%;
   margin-top: 12px;
 }
-.type > li:hover .type-two {
-  display: block;
-}
 .typetwo {
   display: none;
   position: absolute;
   left: 0;
   top: 43px;
-  height: 95px;
+  height: 112px;
   width: 100%;
   background-color: rgba(49, 49, 49, 0.95);
-  z-index: 999
+  z-index: 100;
 }
 .typetwo-con {
-  width: 550px;
+  width: auto;
   display: flex;
   flex-wrap: nowrap;
-  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
 }
 .typetwo-con > a {
   height: 95px;
@@ -516,7 +519,20 @@ export default {
 .type > li:hover .typetwo {
   display: block;
 }
-.typetwo-con>a:hover .typetwo-con>a>p{
-   color: #fff
+.typetwo-con > a:hover .typetwo-con > a > p {
+  color: #fff;
+}
+.type > li:nth-child(1) > a {
+  border-bottom: 1px solid #fff;
+}
+.ringt-nav > li:hover {
+  border-bottom: 1px solid #fff;
+}
+.type > li > a:hover {
+  color: #ccc;
+}
+.typetwo-con > a > p:hover {
+  color: #fff;
 }
 </style>
+

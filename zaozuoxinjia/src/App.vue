@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <!-- <router-link to="/login">login</router-link> -->
-    <keep-alive><navg></navg></keep-alive>
-   <keep-alive> <router-view></router-view></keep-alive>
+   <navg v-if="!$route.meta.navshow"></navg>
+      <router-view @myevent='changePath'></router-view>
+      <!-- <router-link to='/cart'>cart</router-link> -->
+   <bot v-if="!$route.meta.keepAlive"></bot>
   </div>
 </template>
 
@@ -13,16 +15,32 @@ import login from './views/Login.vue'
 import register from './views/Register.vue'
 import navg from './components/nav'
 import sofa from './views/sofa'
+import bot from './components/bottom'
+import cart from './views/Cart'
 
 export default {
+  
+  data:function(){
+    return{
+      path:true
+    }
+  },
   components:{
-    chair:chair,
+    chair,
     desk,
     login,
     register,
     navg,
-    sofa
+    sofa,
+    bot,
+    cart
+  },
+  methods:{
+    changePath(value){
+        this.path = value
+    } 
   }
+
 }
 </script>
 <style lang="scss">

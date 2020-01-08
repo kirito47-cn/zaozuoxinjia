@@ -4,7 +4,7 @@
     <div class="chairs">
       <div class="chair-box" ref="graybox" v-for="(item,index) in chairs" @click="linktoitem(index)" :key="index">
         <a href="#">
-          <img :src="item.shop_imgsrc" />
+          <img :src="item.shop_imgsrc|changeUrl" />
         </a>
         <p class="chair-name">{{item.shop_name}}</p>
         <p class="chair-price">￥{{item.shop_price}}</p>
@@ -36,10 +36,11 @@ export default {
       return holder;
     }
   },
-  components: {
-    navg: navg
+  filters:{
+      changeUrl(oldurl){
+          return oldurl.replace(/localhost/,'192.168.6.12')
+      }
   },
-
   methods: {
    linktoitem(index){
       this.$router.push({path:'/item',query:{
@@ -51,11 +52,25 @@ export default {
     axios.get("http://localhost:9999/chair").then(res => {
       this.chairs = res.data.data;
     });
+  },
+  watch:{
+    $route(to,from){
+      // console.log(to,from);
+      console.log(to.name);
+      if(to.name !="item"){ 
+        axios.get("http://localhost:9999/"+to.name).then(res => {
+        this.chairs = res.data.data
+      })}else{
+       
+      }
+     
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+
 * {
   margin: 0;
   padding: 0;

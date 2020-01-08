@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     var myvalidate = function(context, value, callback) {
@@ -111,21 +112,25 @@ export default {
     submitRegist(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          // alert("submit!");
-          this.axios
-            .post("/register", {
+          axios
+            .post("http://localhost:9999/register", {
               username: this.ruleForm.name,
               password: this.ruleForm.password
             })
             .then(res => {
-              if (res.data.status == 1) {
+              if (res.data.code == 1) {
                 this.$message({
-                  message: "恭喜你，注册成功！",
-                  type: "success"
+                  message: res.data.msg,
+                  type: "success",
+                  offset:60
                 });
                 this.$router.push({path:'/login'})
               } else {
-                this.$message.error("用户名已存在，请重新注册！");
+                 this.$message({
+                  message: res.data.msg,
+                  type: "error",
+                  offset:60
+                });
               }
             });
         } else {
@@ -156,9 +161,11 @@ img {
   background-color: white;
   position: fixed;
   left: 50%;
-  top: 25%;
+  top: 50%;
   margin-left: -250px;
+  margin-top: -250px;
   border-radius: 6px;
+  text-align: center
 }
 p {
   font-size: 28px;

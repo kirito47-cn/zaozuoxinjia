@@ -14,8 +14,10 @@ Vue.prototype.axios=axios;
 Vue.config.productionTip = false
 
 Vue.prototype.axios = axios
-new Vue({
+
+let vm =new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+// console.log(vm);
