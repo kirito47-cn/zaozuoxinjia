@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layout 后台大布局 - Layui</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <style>
+    .layui-input,
+    .layui-input-block,
+    .layui-textarea {
+      width: 300px;
+    }
+
+    .red {
+      color: red;
+      font-size: 18px;
+    }
+
+    .layui-location {
+      margin: 10px 0 10px 110px;
+    }
+  </style>
+</head>
+
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo">用户管理界面</div>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+      <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+          <li class="layui-nav-item layui-nav-itemed">
+            <a class="" href="./UserManagement.html">用户管理</a>
+            <dl class="layui-nav-child">
+              <dd><a href="./UserManagement.html">用户</a></dd>
+              <dd><a href="./AddUser.html">添加用户</a></dd>
+            </dl>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="layui-body">
+      <!-- 内容主体区域 -->
+      <div style="padding: 15px;">
+        <h2>添加用户</h2>
+      </div>
+      <hr>
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+          <label class="layui-form-label">用户名<span class="red">*</span></label>
+          <div class="layui-input-block">
+            <input type="text" name="name" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+              class="layui-input">
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label">密码<span class="red">*</span></label>
+          <div class="layui-input-block">
+            <input type="text" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formAdd">立即添加</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="layui-footer">
+      <!-- 底部固定区域 -->
+    </div>
+  </div>
+  <!-- 引入layui的所有组件 -->
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script src="../layui/layui.all.js"></script>
+  <script src="../js/AddUser.js"></script>
+  </script>
+</body>
+
+</html>
+
+
+
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录页面</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-image: url("../img/loginBg.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            border-radius: 6px;
+            background-color: white;
+        }
+
+        h2 {
+            margin-top: 16px;
+            margin-left: 33%;
+        }
+
+        .zhuti {
+            padding-top: 20px;
+        }
+
+        input {
+            width: 160px;
+            height: 18px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="zhuti">
+            <h2>登录页面</h2>
+        </div>
+        <div style="margin: 18px;margin-top: 42px;">
+            用户名：<input type="text" name="username"><br><br>
+            密&nbsp;&nbsp;&nbsp;码：<input type="password" name="password"><br><br>
+        </div>
+        <input type="button" value="登录" style="width: 50px;height: 26px;margin-left: 42%;">
+
+    </div>
+
+
+
+    <script>
+        document.querySelector("input[type='button']").onclick = function () {
+            var name = document.querySelector("input[type='text']").value;
+            var pwd = document.querySelector("input[type='password']").value;
+            if (((name.length > 6) && (name.length < 16)) && (/^(?=.*\d+)(?=.*[a-zA-Z]+)(?=.*[_]+).{6,16}$/igm).test(pwd)) {
+                // 验证登录结果
+                $.post("http://localhost:8888/manage/login", {
+                    username: name,
+                    password: pwd
+                }, function (data) {
+                    console.log(data)
+                    if (data.code == -1) {
+                        alert(data.msg)
+                    } else if (data.code == -2) {
+                        alert(data.msg)
+                    } else {
+                        alert(data.msg);
+                        sessionStorage.setItem("aid", data.aid)
+                        window.location.href = "./UserManagement.html"
+                    }
+                })
+            } else {
+                if ((name.length < 6) || (name.length > 16)) {
+                    alert("用户名6~16位")
+                } else if (!(/^(?=.*\d+)(?=.*[a-zA-Z]+)(?=.*[_]+).{6,16}$/igm).test(pwd)) {
+                    alert("密码是6~16位,必须包含数字、字母、下划线!")
+                }
+            }
+
+
+
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>电影管理页面</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">创作新家后台管理</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="">控制台</a></li>
+                <li class="layui-nav-item"><a href="">商品管理</a></li>
+                <li class="layui-nav-item"><a href="">用户</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它系统</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="">消息管理</a></dd>
+                        <dd><a href="">授权管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="">
+                            <img src="../img/头像.jpg" class="layui-nav-img">
+                            <span class="yhm">用户名</span>
+
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="./login.html">账号切换</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree " lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="./GoodsManage.html">所有商品</a>
+                        
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="./Addgoods.html">添加商品</a>
+                        
+                    </li>
+                    <li class="layui-nav-item"><a href="./Change.html">修改商品</a></li>
+                    <!-- <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <!-- 引入表格 -->
+                <table id="filmlist" lay-filter="listtable" lay-data="{id: 'filmlist1'}">
+                    <script type="text/html" id="toolbarDesc">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layui-btn-sm" lay-event="edit">修改</button>
+                            <button class="layui-btn layui-btn-sm" lay-event="del">删除</button>
+                        </div>
+                    </script>
+                </table>
+            </div>
+        </div>
+
+        
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="../layui/layui.all.js"></script>
+    <script src="../js/goodslist.js"></script>
+</body>
+
+</html>

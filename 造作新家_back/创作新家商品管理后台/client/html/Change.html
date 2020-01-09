@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改商品信息</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../css/showimg.css">
+    <style>
+        .mybtn {
+            margin: 10px 0px 20px 110px;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">创作新家后台管理</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="">控制台</a></li>
+                <li class="layui-nav-item"><a href="">商品管理</a></li>
+                <li class="layui-nav-item"><a href="">用户</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它系统</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="">消息管理</a></dd>
+                        <dd><a href="">授权管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="">
+                        <img src="../img/头像.jpg" class="layui-nav-img">
+                        <span class="yhm">用户名</span>
+
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="./login.html">账号切换</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="./GoodsManage.html">所有商品</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="./Addgoods.html">添加商品</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="./Change.html">修改商品</a>
+                    </li>
+                    <!-- <li class="layui-nav-item">
+                        <a href="">发布商品</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">商品名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" placeholder="请输入商品名称" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">价格</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="price" placeholder="请输入价格" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">商品描述</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="desc" required lay-verify="required" placeholder="请输入商品描述"
+                                autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">选择种类</label>
+                        <div class="layui-input-block">
+                            <select name="type">
+                                <option value=""></option>
+                                <option value="3">沙发</option>
+                                <option value="1">椅子</option>
+                                <option value="2">桌子</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">选择类型</label>
+                        <div class="layui-input-block">
+                            <select name="type2">
+                                <option value=""></option>
+                                <option value="1">单人沙发</option>
+                                <option value="2">双人沙发</option>
+                                <option value="3">三人沙发</option>
+                                <option value="1">座椅</option>
+                                <option value="2">坐墩</option>
+                                <option value="3">休闲椅</option>
+                                <option value="1">书桌</option>
+                                <option value="2">茶几</option>
+                                <option value="3">边几</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" class="layui-btn mybtn" id="uploadImg" style="margin-bottom: 200px;"> 
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                    <img id="showimg" src="" alt="">
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formChange">立即修改</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="../layui/layui.all.js"></script>
+    <script src="../js/uploadfile.js"></script>
+    <script src="../js/changegoods.js"></script>
+</body>
+
+</html>
